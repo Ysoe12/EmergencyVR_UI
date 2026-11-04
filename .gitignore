@@ -67,6 +67,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Agent tooling (MCP, Skills, local-only config)
+.agents/
+AGENTS.md
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 

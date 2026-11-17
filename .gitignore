@@ -77,3 +77,9 @@ AGENTS.md
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Agent-specific local config
+.pi/
+
+# Unity crash recovery temp files
+Assets/_Recovery/

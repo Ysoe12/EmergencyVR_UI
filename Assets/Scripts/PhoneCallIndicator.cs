@@ -4,10 +4,13 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class PhoneCallIndicator : MonoBehaviour
 {
-    [Header("Indicador")]
-    [SerializeField] private GameObject indicador;
+    [Header("Indicadores")]
+    [SerializeField] private GameObject indicadorLlamando;
+    [SerializeField] private GameObject indicadorPanelNumerico;
+    [SerializeField] private GameObject indicadorEnCamino;
 
     private XRSimpleInteractable interactable;
+    private int estadoActual = 0;
 
     private void Awake()
     {
@@ -16,6 +19,9 @@ public class PhoneCallIndicator : MonoBehaviour
 
     private void OnEnable()
     {
+        estadoActual = 0;
+        ActualizarIndicadores();
+
         if (interactable == null)
             interactable = GetComponent<XRSimpleInteractable>();
 
@@ -37,9 +43,19 @@ public class PhoneCallIndicator : MonoBehaviour
     {
         if (!TrainingManager.EntrenamientoIniciado) return;
 
-        if (indicador != null)
-        {
-            indicador.SetActive(!indicador.activeSelf);
-        }
+        estadoActual = (estadoActual + 1) % 4;
+        ActualizarIndicadores();
+    }
+
+    private void ActualizarIndicadores()
+    {
+        if (indicadorLlamando != null)
+            indicadorLlamando.SetActive(estadoActual == 1);
+
+        if (indicadorPanelNumerico != null)
+            indicadorPanelNumerico.SetActive(estadoActual == 2);
+
+        if (indicadorEnCamino != null)
+            indicadorEnCamino.SetActive(estadoActual == 3);
     }
 }
